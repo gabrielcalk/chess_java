@@ -1,4 +1,4 @@
-package board;
+package game;
 
 public class Position {
     private int row;
@@ -15,12 +15,12 @@ public class Position {
         return this.row;
     }
 
-    public void setRow(int row){
-        this.row = row;
-    }
-
     public int getColumn(){
         return this.column;
+    }
+
+    public void setRow(int row){
+        this.row = row;
     }
 
     public void setColumn(int column){
