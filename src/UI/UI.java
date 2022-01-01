@@ -54,12 +54,19 @@ public class UI {
         printCapturedPieces(capturedPieces);
         System.out.println();
         System.out.println("Turn: " + chessMatch.getTurn());
-        System.out.println("Player Turn: " + chessMatch.getCurrentPlayer());
-        // if the check variable is true, then print "check"
-        if(chessMatch.getCheck()){
+        if(!chessMatch.getCheckMate()){
+            System.out.println("Player Turn: " + chessMatch.getCurrentPlayer());
+            // if the check variable is true, then print "check"
+            if(chessMatch.getCheck()){
+                System.out.println(ANSI_RED);
+                System.out.println("CHECK!");
+                System.out.println(ANSI_RESET);
+            }
+        } else{
             System.out.println(ANSI_RED);
-            System.out.println("CHECK!");
+            System.out.println("CHECKMATE!");
             System.out.println(ANSI_RESET);
+            System.out.println("Winner: " + chessMatch.getCurrentPlayer());
         }
     }
 

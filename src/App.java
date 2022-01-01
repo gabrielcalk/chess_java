@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import UI.UI;
-import board.Board;
-import board.Position;
 import chess.ChessException;
 import chess.ChessMatch;
 import chess.ChessPiece;
@@ -18,7 +16,7 @@ public class App {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> capturedPieces = new ArrayList<>();
 
-        while(true){
+        while(!chessMatch.getCheckMate()){
             try{
                 UI.clearScreen();
                 UI.printMatch(chessMatch, capturedPieces);
@@ -49,6 +47,7 @@ public class App {
                 sc.nextLine();
             }
         }
-        
+        UI.clearScreen();
+        UI.printMatch(chessMatch, capturedPieces); 
     }
 }
