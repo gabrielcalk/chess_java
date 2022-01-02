@@ -115,17 +115,13 @@ public class ChessMatch {
 
         return (ChessPiece)capturedPiece;
     }
-
+    
+    /**
+     * @REMEBER
+     */
     public ChessPiece replacePromotedPiece(String type){
         if(promoted == null){
             throw new IllegalStateException("There Is No Piece To Be Promoted");
-        }
-
-        /**
-         * @REMEBER
-         */
-        if(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
-            throw new InvalidParameterException("Invalid Type For Promotion");
         }
 
         Position pos = promoted.getChessPosition().toPosition();
@@ -140,10 +136,10 @@ public class ChessMatch {
         return newPiece;
     }
 
+    /**
+     * @REMEBER
+     */
     private ChessPiece newPiece(String type, Color color){
-        /**
-         * @REMEBER
-         */
         if(type.equals("B"))
             return new Bishop(board, color);
         if(type.equals("N"))
