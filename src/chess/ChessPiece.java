@@ -5,15 +5,15 @@ import board.Piece;
 import board.Position;
 
 public abstract class ChessPiece extends Piece{
-    private Color color;
+    private ColorChess color;
     private int moveCount;
 
-    public ChessPiece(Board board, Color color){
+    public ChessPiece(Board board, ColorChess color){
         super(board);
         this.color = color;
     }
 
-    public Color getColor(){
+    public ColorChess getColor(){
         return this.color;
     }
 

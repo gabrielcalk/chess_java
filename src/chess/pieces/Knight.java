@@ -3,17 +3,17 @@ package chess.pieces;
 import board.Board;
 import board.Position;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class Knight extends ChessPiece{
 
-    public Knight(Board board, Color color) {
+    public Knight(Board board, ColorChess color) {
         super(board, color);
     }
 
     @Override
     public String toString() {
-        return "N";
+        return "\u2658";
     }
 
     private boolean canMove(Position position){

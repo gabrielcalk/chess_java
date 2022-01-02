@@ -3,17 +3,17 @@ package chess.pieces;
 import board.Board;
 import board.Position;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class Bishop extends ChessPiece{
 
-    public Bishop(Board board, Color color){
+    public Bishop(Board board, ColorChess color){
         super(board, color);
     }
 
     @Override
     public String toString(){
-        return "B";
+        return "\u2657";
     }
 
     @Override

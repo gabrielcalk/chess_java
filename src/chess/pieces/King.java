@@ -4,20 +4,20 @@ import board.Board;
 import board.Position;
 import chess.ChessMatch;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class King extends ChessPiece{
 
     private ChessMatch chessMatch;
 
-    public King(Board board, Color color, ChessMatch chessMatch) {
+    public King(Board board, ColorChess color, ChessMatch chessMatch) {
         super(board, color);
         this.chessMatch = chessMatch;
     }
 
     @Override
     public String toString() {
-        return "K";
+        return "\u2654";
     }
 
     private boolean canMove(Position position){

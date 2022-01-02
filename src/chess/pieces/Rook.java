@@ -3,17 +3,17 @@ package chess.pieces;
 import board.Board;
 import board.Position;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class Rook extends ChessPiece{
 
-    public Rook(Board board, Color color){
+    public Rook(Board board, ColorChess color){
         super(board, color);
     }
 
     @Override
     public String toString(){
-        return "R";
+        return "\u2656";
     }
 
     @Override

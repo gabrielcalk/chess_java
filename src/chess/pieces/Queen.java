@@ -3,17 +3,17 @@ package chess.pieces;
 import board.Board;
 import board.Position;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class Queen extends ChessPiece{
 
-    public Queen(Board board, Color color){
+    public Queen(Board board, ColorChess color){
         super(board, color);
     }
 
     @Override
     public String toString(){
-        return "Q";
+        return "\u2655";
     }
 
     @Override

@@ -4,20 +4,20 @@ import board.Board;
 import board.Position;
 import chess.ChessMatch;
 import chess.ChessPiece;
-import chess.Color;
+import chess.ColorChess;
 
 public class Pawn extends ChessPiece{
 
     private ChessMatch chessMatch;
     
-    public Pawn(Board board, Color color, ChessMatch chessMatch) {
+    public Pawn(Board board, ColorChess color, ChessMatch chessMatch) {
         super(board, color);
         this.chessMatch = chessMatch;
     }
 
     @Override
     public String toString(){
-        return "P";
+        return "\u2659";
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Pawn extends ChessPiece{
 
         Position p = new Position(0, 0);
 
-        if(getColor() == Color.WHITE) {
+        if(getColor() == ColorChess.WHITE) {
             p.setValues(position.getRow() - 1, position.getColumn());
             if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
                 mat[p.getRow()][p.getColumn()] = true;
