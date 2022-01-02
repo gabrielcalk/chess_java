@@ -15,6 +15,7 @@ import chess.ColorChess;
 
 public class UI{
 
+    // Color and backcolor available to use
     public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -34,29 +35,51 @@ public class UI{
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-
+    // Method to clean the screen everytime that one move is maked
     public static void clearScreen(){
         System.out.println("\033[H\033[2J");
         System.out.flush();
     }
 
+    /**
+     * 
+     * @param sc
+     * @return ChessPosition
+     */
     public static ChessPosition readChessPosition(Scanner sc){
         try{
+            // Reading the Chess Position Provide By The User
             String s = sc.nextLine();
             char column = s.charAt(0);
             int row = Integer.parseInt(s.substring(1));
             return new ChessPosition(column, row);
         } catch(RuntimeException e){
-            throw new InputMismatchException("Error: valid values are from 1 to 8 and A to H");
+            // Exception if the user provide one wrong input
+            throw new InputMismatchException("Error: valid values are from 1 to 8 and A to H"); 
         }
     }
 
+    /**
+     * 
+     * @param chessMatch
+     * @param capturedPieces
+     * @method Generate the Game
+     */
     public static void printMatch(ChessMatch chessMatch, List<ChessPiece> capturedPieces){
+        // Printing the board
         printBoard(chessMatch.getPieces());
         System.out.println();
+
+        // Printing the captured pieces (black and white)
         printCapturedPieces(capturedPieces);
         System.out.println();
+
+        // Showing who has to play next
         System.out.println("Turn: " + chessMatch.getTurn());
+
+        /**
+         * Conditional to Check the "Check" and "CheckMate"
+         */
         if(!chessMatch.getCheckMate()){
             System.out.println("Player Turn: " + chessMatch.getCurrentPlayer());
             // if the check variable is true, then print "check"
@@ -73,11 +96,17 @@ public class UI{
         }
     }
 
-// Printing the board
+    /**
+     * 
+     * @param pieces Matrix
+     */
     public static void printBoard(ChessPiece[][] pieces){
+        // Printing the board
         for(int i = 0; i < pieces.length; i++){
             System.out.print((8 - i) + "    ");
             for(int j = 0; j < pieces.length; j++){
+                
+                // Adding the background stardand or black on the page and printing the piece on the cl
                 if(i % 2 == 1){
                     if(j % 2 == 1){
                         System.out.print(ANSI_RESET);
@@ -105,16 +134,17 @@ public class UI{
                 }
             }
             System.out.println();
-            // System.out.println();
         }
+
         System.out.println();
         System.out.println("      A  B  C  D  E  F  G  H");
         System.out.println();
     }
 
-// Printing the board with the possible moves
+// Printing the board with the possible moves (After the user select one piece)
     public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves){
         for(int i = 0; i < pieces.length; i++){
+            // Adding the background stardand or black on the page, printing the piece on the cl and the possible moves
             System.out.print((8 - i) + "    ");
             for(int j = 0; j < pieces.length; j++){
                 if(i % 2 == 1){
@@ -150,6 +180,11 @@ public class UI{
         System.out.println();
     }
 
+    /**
+     * Printing Each Piece
+     * @param piece
+     * @param background
+     */
     private static void printPiece(ChessPiece piece, boolean background){
         if(background){
             System.out.print(ANSI_BLUE_BACKGROUND);
@@ -177,14 +212,19 @@ public class UI{
         }
     }
     
+    /**
+     * Printing the Captured Pieces
+     * @param piecesCaptured
+     */
     private static void printCapturedPieces(List<ChessPiece> piecesCaptured){
+        // Putting in two different lists the pieces white and black that had been captured.
         List<ChessPiece> white = piecesCaptured.stream().filter(x -> x.getColor() == ColorChess.WHITE).collect(Collectors.toList());
         List<ChessPiece> black = piecesCaptured.stream().filter(x -> x.getColor() == ColorChess.BLACK).collect(Collectors.toList());
         System.out.println("Captured Pieces: ");
 
+        // Printing the pieces
         try{
             PrintStream outStream = new PrintStream(System.out, true, "UTF-8");
-            // System.out.print(ANSI_WHITE_BACKGROUND);
             outStream.print("White: ");
             outStream.print(ANSI_WHITE);
             outStream.print(Arrays.toString(white.toArray()));
@@ -195,7 +235,6 @@ public class UI{
 
         try{
             PrintStream outStream = new PrintStream(System.out, true, "UTF-8");
-            // System.out.print(ANSI_WHITE_BACKGROUND);
             outStream.print("Black: ");
             outStream.print(ANSI_YELLOW);
             outStream.print(Arrays.toString(black.toArray()));

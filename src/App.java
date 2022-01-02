@@ -12,15 +12,21 @@ import chess.ChessPosition;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        /**
+         * Scanner and Lists
+         */
         Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> capturedPieces = new ArrayList<>();
 
+        // The Game keep going if the variable check mate is false
         while(!chessMatch.getCheckMate()){
             try{
                 UI.clearScreen();
                 UI.printMatch(chessMatch, capturedPieces);
                 System.out.println();
+
+                // Source Position (from)
                 System.out.print("Source: ");
                 ChessPosition source = UI.readChessPosition(sc);
 
@@ -30,6 +36,7 @@ public class App {
     
                 System.out.println();
     
+                // Target Position (to)
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
     
@@ -39,6 +46,7 @@ public class App {
                     capturedPieces.add(capturedPiece);
                 }
 
+                // Checking if the pawn get on the last row and promoting it
                 if(chessMatch.getPromoted() != null){
                     System.out.print("Enter Piece For Promotion: B / N / R / Q: ");
                     String type = sc.nextLine().toUpperCase();

@@ -21,6 +21,9 @@ public abstract class ChessPiece extends Piece{
         return this.moveCount;
     }
 
+    /**
+     * @method to increase and decrease movements to allow some special moves
+     */
     public void increaseMoveCount(){
         this.moveCount++;
     }
@@ -29,11 +32,11 @@ public abstract class ChessPiece extends Piece{
         this.moveCount--;
     }
 
-
     public ChessPosition getChessPosition(){
         return ChessPosition.fromPosition(position);
     }
 
+    // Method that will be use to check if has one piece in one specific place
     protected boolean isThereOpponentPiece(Position position){
         ChessPiece p = (ChessPiece) getBoard().piece(position);
         return p != null && p.getColor() != color;

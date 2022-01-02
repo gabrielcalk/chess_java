@@ -6,6 +6,11 @@ public class ChessPosition {
     private char column;
     private int row;
 
+    /**
+     * Checking if we receive possible positions (just making sure)
+     * @param column
+     * @param row
+     */
     public ChessPosition(char column, int row){
         if(column < 'a' || column > 'h' || row < 1 || row > 8){
             throw new ChessException("Error: valid values are a - h and 1 - 8");
@@ -21,7 +26,7 @@ public class ChessPosition {
     public int getRow(){
         return this.row;
     }
-
+    
     protected Position toPosition(){
         return new Position(8 - row, column - 'a');
     }

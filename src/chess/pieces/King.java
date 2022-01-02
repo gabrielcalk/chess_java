@@ -20,6 +20,7 @@ public class King extends ChessPiece{
         return "\u2654";
     }
 
+    // Method that make sure that the king can move
     private boolean canMove(Position position){
         ChessPiece p = (ChessPiece) getBoard().piece(position);
         return p == null || p.getColor() != getColor(); 

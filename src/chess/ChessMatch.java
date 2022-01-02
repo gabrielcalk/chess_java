@@ -75,6 +75,10 @@ public class ChessMatch {
         return board.piece(position).possibleMoves();
     }
 
+    /**
+     * @param sourcePosition
+     * @param targetPosition
+     */
     public ChessPiece performChessMovie(ChessPosition sourcePosition, ChessPosition targetPosition){
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();
@@ -118,6 +122,7 @@ public class ChessMatch {
     
     /**
      * @REMEBER
+     * @method replaces the pawn and add the new piece
      */
     public ChessPiece replacePromotedPiece(String type){
         if(promoted == null){
@@ -137,6 +142,7 @@ public class ChessMatch {
 
     /**
      * @REMEBER
+     * Creating one new piece (used in promotion)
      */
     private ChessPiece newPiece(String type, ColorChess color){
         if(type.equals("B"))
@@ -148,6 +154,7 @@ public class ChessMatch {
         return new Queen(board, color);
     }
 
+    // Exceptions to show to the user when he/she select one wrong position or piece
     private void validateSourcePosition(Position position){
         if(!board.thereIsAPiece(position)){
             throw new ChessException("There is no piece on source position");
@@ -168,6 +175,13 @@ public class ChessMatch {
         }
     }
 
+    /**
+     * 
+     * @param source
+     * @param target
+     * @return capturedPiece if has one, 
+     * this method is used on every moved
+     */
     private Piece makeMove(Position source, Position target){
         ChessPiece p = (ChessPiece)board.removePiece(source);
         p.increaseMoveCount();
