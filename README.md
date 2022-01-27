@@ -32,7 +32,7 @@ Gabriel Cavalcante Causin
 ## *Usage*
 To play you just need to go to the "bin" folder, and open the GIT BASH there. 
 
-After that, you will be able to play by typing on the bash: "java App".
+After that, you will be able to play by typing on the bash: "Java App".
 
 ![image](https://user-images.githubusercontent.com/89816900/147892270-f098232d-feb8-4c0d-bdf4-af231a771ba8.png)
 
